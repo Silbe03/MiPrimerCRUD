@@ -1,0 +1,24 @@
+﻿@model IQueryable<Asignatura>
+
+
+<h1>Ejemplo LINQ</h1>
+
+<form asp-controller="Linq" asp-action="Index" method="GET">
+    <input name="filtro" value="@ViewBag.filtro"/>
+    <button class="btn btn-primary" type="submit">Enviar</button>
+</form>
+
+<table class="table table-striped">
+
+    @foreach (var asig in Model){
+
+        <tr>
+            <td>@asig.Id</td>
+            <td>@asig.Nombre</td>
+            <td>@asig.Cursillo?.Nombre</td>
+        </tr>
+    }
+
+</table>
+
+

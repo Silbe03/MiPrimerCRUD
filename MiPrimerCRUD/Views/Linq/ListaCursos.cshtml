@@ -1,0 +1,50 @@
+﻿@model IQueryable<Curso>
+
+
+@{
+
+   Layout = "_Secundario";
+}
+
+<h1>LISTADO DE CURSOS</h1>
+
+<h5>@ViewBag.autor</h5>
+
+<form asp-controller="Linq" asp-action="ListaCursos" method="GET">
+   <div class="row">
+
+       <div class="col-md-4">
+           <label>Filtro:</label>
+            <input name="filtro" value="@ViewBag.filtro" class="form-control" />
+       </div>
+
+        <div class="col-md-4">
+            <label>Fecha Desde:</label>
+            <input type="date" name="fechaDesde" value="@ViewBag.fechaDesde" class="form-control" />
+        </div>
+
+        <div class="col-md-4">
+            <label>Fecha Hasta:</label>
+            <input type="date" name="fechaHasta" value="@ViewBag.fechaHasta" class="form-control" />
+        </div>
+       
+   </div> 
+   
+    <button class="btn btn-primary" type="submit">Enviar</button>
+</form>
+
+<table class="table table-striped">
+
+    @foreach (var cur in Model)
+    {
+
+        <tr>
+            <td>@cur.Id</td>
+            <td>@cur.Nombre</td>
+            <td>@cur.Lugar</td>
+            <td>@cur.FechaInicio</td>
+            <td>@cur.Activo</td>
+        </tr>
+    }
+
+</table>
